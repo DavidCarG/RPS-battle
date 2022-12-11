@@ -31,3 +31,9 @@ function playGame(userChoice,computerChoice){
     }
 }
 
+let nRounds = Number(prompt("How many rounds do you want to play?"));
+
+for(let i=0;i<nRounds;i++){
+    let userChoice = prompt("Your move:").toLowerCase();
+    console.log(playGame(userChoice,getComputerChoice()));
+}
