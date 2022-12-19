@@ -31,9 +31,25 @@ function playGame(userChoice,computerChoice){
     }
 }
 
-let nRounds = Number(prompt("How many rounds do you want to play?"));
-
-for(let i=0;i<nRounds;i++){
-    let userChoice = prompt("Your move:").toLowerCase();
-    console.log(playGame(userChoice,getComputerChoice()));
+function playRock(){
+    let result = playGame("rock",getComputerChoice());
+    console.log(result);
 }
+
+function playPaper(){
+    let result = playGame("paper",getComputerChoice());
+    console.log(result);
+}
+
+function playScissors(){
+    let result = playGame("scissors",getComputerChoice());
+    console.log(result);
+}
+
+const buttRock = document.querySelector('.rockButt');
+const buttPaper = document.querySelector('.paperButt');
+const buttScissors = document.querySelector('.scissorsButt');
+
+buttRock.addEventListener('click',playRock);
+buttPaper.addEventListener('click',playPaper);
+buttScissors.addEventListener('click',playScissors);
