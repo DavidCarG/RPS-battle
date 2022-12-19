@@ -31,19 +31,27 @@ function playGame(userChoice,computerChoice){
     }
 }
 
+const resultContainer = document.querySelector('.results');
+
 function playRock(){
     let result = playGame("rock",getComputerChoice());
-    console.log(result);
+    let child = document.createElement('p');
+    child.textContent = result;
+    resultContainer.appendChild(child);
 }
 
 function playPaper(){
     let result = playGame("paper",getComputerChoice());
-    console.log(result);
+    let child = document.createElement('p');
+    child.textContent = result;
+    resultContainer.appendChild(child);
 }
 
 function playScissors(){
     let result = playGame("scissors",getComputerChoice());
-    console.log(result);
+    let child = document.createElement('p');
+    child.textContent = result;
+    resultContainer.appendChild(child);
 }
 
 const buttRock = document.querySelector('.rockButt');
