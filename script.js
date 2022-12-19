@@ -1,4 +1,6 @@
 const choices = new Array("rock","paper","scissors");
+let humanScore = 0;
+let computerScore = 0;
 
 function randomNumber(min,max){
     return Math.round(Math.random()*(max-min))+min;
@@ -31,27 +33,56 @@ function playGame(userChoice,computerChoice){
     }
 }
 
+function editScore(gameResult){
+    if(gameResult.charAt(4)==='w'){
+        humanScore++;
+        const score = document.querySelector('#hPoints');
+        score.textContent = humanScore; 
+    }else{
+        computerScore++;
+        const score = document.querySelector('#cPoints');
+        score.textContent = computerScore;
+    }
+
+    if(computerScore>4){
+        let child = document.createElement('p');
+        child.textContent = "The machines have won!";
+        resultContainer.appendChild(child);
+    }else if(humanScore>4){
+        let child = document.createElement('p');
+        child.textContent = "Humanity has won!!";
+        resultContainer.appendChild(child);
+    }
+}
+
 const resultContainer = document.querySelector('.results');
 
 function playRock(){
+    if(humanScore>4 || computerScore>4) return;
     let result = playGame("rock",getComputerChoice());
     let child = document.createElement('p');
     child.textContent = result;
     resultContainer.appendChild(child);
+    editScore(result);
 }
 
 function playPaper(){
+    if(humanScore>4 || computerScore>4) return;
     let result = playGame("paper",getComputerChoice());
     let child = document.createElement('p');
     child.textContent = result;
     resultContainer.appendChild(child);
+    editScore(result);
 }
 
 function playScissors(){
+    if(humanScore>4 || computerScore>4) return;
+
     let result = playGame("scissors",getComputerChoice());
     let child = document.createElement('p');
     child.textContent = result;
     resultContainer.appendChild(child);
+    editScore(result);
 }
 
 const buttRock = document.querySelector('.rockButt');
@@ -61,3 +92,4 @@ const buttScissors = document.querySelector('.scissorsButt');
 buttRock.addEventListener('click',playRock);
 buttPaper.addEventListener('click',playPaper);
 buttScissors.addEventListener('click',playScissors);
+
